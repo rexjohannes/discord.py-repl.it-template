@@ -1,5 +1,7 @@
 import discord
 import asyncio
+import os
+from keep_alive import keep_alive
 from discord.ext import commands, tasks
 from itertools import cycle
 
@@ -39,5 +41,6 @@ bot.remove_command('help')
 async def help(ctx):
   await ctx.send("Commands: \nhelp - View this message.")
   
-  
-bot.run('TOKEN')
+keep_alive()
+token = os.environ.get("DISCORD_BOT_SECRET")  
+bot.run(token)
